@@ -14,7 +14,7 @@ import com.amath.advacedmath.convert.Angle;
 public class Function_ extends DifferentialCalculus {
 
     Token function_;
-    Angle angleType = Angle.radians;
+    Angle angleType = Angle.RADIAN;
 
     public Function_(Token function_, TokenList fx) {
         super(fx, TokenType.FUNCTION_);

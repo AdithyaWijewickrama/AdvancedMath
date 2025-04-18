@@ -1,9 +1,5 @@
 package com.amath.advacedmath.convert;
 
-/**
- *
- * @author Adithya Wijewickrama
- */
 public enum Volume {
     /**
      * For 01 Liter miliLiters 1000
@@ -98,20 +94,20 @@ public enum Volume {
         return VOLUME;
     }
 
-    public String getStr() {
+    public String toString() {
         return STR;
     }
 
     public static Object[][] getAllVars() {
-        Object Names[] = Volume.values();
-        Object Vars[][] = new Object[Names.length][2];
+        Object names[] = Volume.values();
+        Object vars[][] = new Object[names.length][2];
         int Index = 0;
         for (Volume g : Volume.values()) {
-            Vars[Index][0] = g.getStr();
-            Vars[Index][1] = g;
+            vars[Index][0] = g.toString();
+            vars[Index][1] = g;
             Index++;
         }
-        return Vars;
+        return vars;
     }
 
 }

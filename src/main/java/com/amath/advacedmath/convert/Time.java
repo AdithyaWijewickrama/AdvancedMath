@@ -1,9 +1,5 @@
 package com.amath.advacedmath.convert;
 
-/**
- *
- * @author Adithya Wijewickrama
- */
 public enum Time {
     S(1, "Seconds"),
     NanoS(Units.nano.getVal() * S.TIME, "Nanoseconds"),
@@ -27,20 +23,20 @@ public enum Time {
         return TIME;
     }
 
-    public String getStr() {
+    public String toString() {
         return STR;
     }
 
     public static Object[][] getAllVars() {
-        Object Names[] = Time.values();
-        Object Vars[][] = new Object[Names.length][2];
+        Object names[] = Time.values();
+        Object vars[][] = new Object[names.length][2];
         int Index = 0;
         for (Time g : Time.values()) {
-            Vars[Index][0] = g.getStr();
-            Vars[Index][1] = g;
+            vars[Index][0] = g.toString();
+            vars[Index][1] = g;
             Index++;
         }
-        return Vars;
+        return vars;
     }
 
 }

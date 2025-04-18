@@ -1,9 +1,5 @@
 package com.amath.advacedmath.convert;
 
-/**
- *
- * @author Adithya Wijewickrama
- */
 public enum Units {
 
     deci(1E-1),

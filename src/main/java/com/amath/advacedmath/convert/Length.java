@@ -5,47 +5,47 @@ public enum Length {
     /**
      * Meters
      */
-    Meter(1, "Meters"),
+    METER(1, "Meters"),
     /**
      * Nanometers
      */
-    NM(Units.nano.getVal() * Meter.LEN, "Nanometers"),
+    NANOMETER(Units.nano.getVal() * METER.LEN, "Nanometers"),
     /**
      * Microns
      */
-    MCN(Units.micro.getVal() * Meter.LEN, "Microns"),
+    MICROMETER(Units.micro.getVal() * METER.LEN, "Microns"),
     /**
      * Millimeters
      */
-    MM(Units.mili.getVal() * Meter.LEN, "Milimeters"),
+    MILIMETER(Units.mili.getVal() * METER.LEN, "Milimeters"),
     /**
      * Centimeters
      */
-    CM(Units.centi.getVal() * Meter.LEN, "Centimeters"),
+    CENTIMETER(Units.centi.getVal() * METER.LEN, "Centimeters"),
     /**
      * Feet
      */
-    Feets(CM.getVal() * 30.48, "Feets"),
+    FEET(CENTIMETER.getVal() * 30.48, "Feets"),
     /**
      * Kilometers
      */
-    inch(.0254, "Inches"),
+    INCH(.0254, "Inches"),
     /**
      * Kilometers
      */
-    KM(Units.kilo.getVal() * Meter.LEN, "Kilometers"),
+    KILOMETER(Units.kilo.getVal() * METER.LEN, "Kilometers"),
     /**
      * Miles
      */
-    Mil(Meter.getVal() * 1609.344, "Miles"),
+    MILE(METER.getVal() * 1609.344, "Miles"),
     /**
-     * Yards
+     * YARD
      */
-    Yards(CM.getVal() * 91.44, "Yards"),
+    YARD(CENTIMETER.getVal() * 91.44, "Yards"),
     /**
      * Hectometers
      */
-    hectM(Meter.getVal() * Units.hect.getVal(), "Hect miles");
+    HECTMILE(METER.getVal() * Units.hect.getVal(), "Hect miles");
 
     public final double LEN;
     public final String DESC;
@@ -59,20 +59,20 @@ public enum Length {
         return LEN;
     }
 
-    public String getDesc() {
+    public String toString() {
         return DESC;
     }
     
     public static Object[][] getAllVars() {
-        Object Names[] = Length.values();
-        Object Vars[][] = new Object[Names.length][2];
+        Object names[] = Length.values();
+        Object vars[][] = new Object[names.length][2];
         int Index = 0;
         for (Length g : Length.values()) {
-            Vars[Index][0] = g.getDesc();
-            Vars[Index][1] = g;
+            vars[Index][0] = g.toString();
+            vars[Index][1] = g;
             Index++;
         }
-        return Vars;
+        return vars;
     }
     
 }

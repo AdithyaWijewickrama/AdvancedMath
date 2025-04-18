@@ -1,144 +1,140 @@
 package com.amath.advacedmath.convert;
 
-/**
- *
- * @author Adithya Wijewickrama
- */
 public enum Data {
 
-    bit(1, "bits"),
+    BIT(1, "bits"),
     /**
-     * Byte 8 bits
+     * BYTE 8 bits
      */
-    Byte(Math.pow(2, 3), "Bytes"),
+    BYTE(Math.pow(2, 3), "Bytes"),
     /**
      * KibiBits 2^10 bits
      */
-    kibib(Units.kibi.getVal() * bit.DATA, "KibiBits"),
+    KIBIBIT(Units.kibi.getVal() * BIT.DATA, "KibiBits"),
     /**
      * MebiBits 2^20 bits
      */
-    mebib(Units.mebi.getVal() * bit.DATA, "MebiBits"),
+    MEBIBIT(Units.mebi.getVal() * BIT.DATA, "MebiBits"),
     /**
      * GibiBits 2^30 bits
      */
-    gibib(Units.gibi.getVal() * bit.DATA, "GibiBits"),
+    GIBIBIT(Units.gibi.getVal() * BIT.DATA, "GibiBits"),
     /**
      * TebiBits 2^40 bits
      */
-    tebib(Units.tebi.getVal() * bit.DATA, "TebiBits"),
+    TEBIBIT(Units.tebi.getVal() * BIT.DATA, "TebiBits"),
     /**
      * PebiBits 2^50 bits
      */
-    pebib(Units.pebi.getVal() * bit.DATA, "PebiBits"),
+    PEBIBIT(Units.pebi.getVal() * BIT.DATA, "PebiBits"),
     /**
      * ExbiBits 2^60 bits
      */
-    exbib(Units.exbi.getVal() * bit.DATA, "ExbiBits"),
+    EXBIBIT(Units.exbi.getVal() * BIT.DATA, "ExbiBits"),
     /**
      * ZebiBits 2^70 bits
      */
-    zebib(Units.zebi.getVal() * bit.DATA, "ZebiBits"),
+    ZEBIBIT(Units.zebi.getVal() * BIT.DATA, "ZebiBits"),
     /**
      * YobiBits 2^80 bits
      */
-    yobib(Units.yobi.getVal() * bit.DATA, "YobiBits"),
+    YOBIBIT(Units.yobi.getVal() * BIT.DATA, "YobiBits"),
     /**
      * KibiBits 2^10 bits
      */
-    kibiB(Units.kibi.getVal() * Byte.DATA, "KibiBits"),
+    KIBIBYTE(Units.kibi.getVal() * BYTE.DATA, "KibiBytes"),
     /**
      * MebiBytes 2^20 Bytes
      */
-    mebiB(Units.mebi.getVal() * Byte.DATA, "MebiBytes"),
+    MEBIBYTE(Units.mebi.getVal() * BYTE.DATA, "MebiBytes"),
     /**
      * GibiBytes 2^30 Bytes
      */
-    gibiB(Units.gibi.getVal() * Byte.DATA, "GibiBytes"),
+    GIBIBYTE(Units.gibi.getVal() * BYTE.DATA, "GibiBytes"),
     /**
      * TebiBytes 2^40 Bytes
      */
-    tebiB(Units.tebi.getVal() * Byte.DATA, "TebiBytes"),
+    TEBIBYTE(Units.tebi.getVal() * BYTE.DATA, "TebiBytes"),
     /**
      * PebiBytes 2^50 Bytes
      */
-    pebiB(Units.pebi.getVal() * Byte.DATA, "PebiBytes"),
+    PEBIBYTE(Units.pebi.getVal() * BYTE.DATA, "PebiBytes"),
     /**
      * ExbiBytes 2^60 Bytes
      */
-    exbiB(Units.exbi.getVal() * Byte.DATA, "ExbiBytes"),
+    EXBIBYTE(Units.exbi.getVal() * BYTE.DATA, "ExbiBytes"),
     /**
      * ZebiBytes 2^70 Bytes
      */
-    zebiB(Units.zebi.getVal() * Byte.DATA, "ZebiBytes"),
+    ZEBIBYTE(Units.zebi.getVal() * BYTE.DATA, "ZebiBytes"),
     /**
      * YobiBytes 2^80 bytes
      */
-    yobiB(Units.yobi.getVal() * Byte.DATA, "YobiBytes"),
+    YOBIBYTE(Units.yobi.getVal() * BYTE.DATA, "YobiBytes"),
     /**
      * KiloBits 10^3 bits
      */
-    kilob(Units.kilo.getVal() * bit.DATA, "KiloBits"),
+    KILOBIT(Units.kilo.getVal() * BIT.DATA, "KiloBits"),
     /**
      * MegaBits 10^6 bits
      */
-    Megab(Units.Mega.getVal() * bit.DATA, "MegaBits"),
+    MEGABIT(Units.Mega.getVal() * BIT.DATA, "MegaBits"),
     /**
      * GigaBits 10^9 bits
      */
-    Gigab(Units.Giga.getVal() * bit.DATA, "GigaBits"),
+    GIGABIT(Units.Giga.getVal() * BIT.DATA, "GigaBits"),
     /**
      * TeraBits 10^12 bits
      */
-    Terab(Units.Tera.getVal() * bit.DATA, "TeraBits"),
+    TERABIT(Units.Tera.getVal() * BIT.DATA, "TeraBits"),
     /**
      * PetaBits 10^15 bits
      */
-    Petab(Units.Peta.getVal() * bit.DATA, "PetaBits"),
+    PETABIT(Units.Peta.getVal() * BIT.DATA, "PetaBits"),
     /**
      * ExaBits 10^18 bits
      */
-    Exab(Units.Exa.getVal() * bit.DATA, "ExaBits"),
+    EXABIT(Units.Exa.getVal() * BIT.DATA, "ExaBits"),
     /**
      * ZetaBits 10^21 bits
      */
-    Zetab(Units.Zeta.getVal() * bit.DATA, "ZetaBits"),
+    ZETABIT(Units.Zeta.getVal() * BIT.DATA, "ZetaBits"),
     /**
      * YottaBits 10^24 bits
      */
-    Yottab(Units.Yotta.getVal() * Byte.DATA, "YottaBits"),
+    YOTTABIT(Units.Yotta.getVal() * BYTE.DATA, "YottaBits"),
     /**
      * KiloBytes 10^3 Bytes
      */
-    kiloB(Units.kilo.getVal() * Byte.DATA, "KiloBytes"),
+    KILOBYTE(Units.kilo.getVal() * BYTE.DATA, "KiloBytes"),
     /**
      * MegaBytes 10^6 Bytes
      */
-    MegaB(Units.Mega.getVal() * Byte.DATA, "MegaBytes"),
+    MEGABYTE(Units.Mega.getVal() * BYTE.DATA, "MegaBytes"),
     /**
      * GigaBytes 10^9 Bytes
      */
-    GigaB(Units.Giga.getVal() * Byte.DATA, "GigaBytes"),
+    GIGABYTE(Units.Giga.getVal() * BYTE.DATA, "GigaBytes"),
     /**
      * TeraBytes 10^12 Bytes
      */
-    TeraB(Units.Tera.getVal() * Byte.DATA, "TeraBytes"),
+    TERABYTE(Units.Tera.getVal() * BYTE.DATA, "TeraBytes"),
     /**
      * PetaBytes 10^15 Bytes
      */
-    PetaB(Units.Peta.getVal() * Byte.DATA, "PetaBytes"),
+    PETABYTE(Units.Peta.getVal() * BYTE.DATA, "PetaBytes"),
     /**
      * ExaBytes 10^18 Bytes
      */
-    ExaB(Units.Exa.getVal() * Byte.DATA, "ExaBytes"),
+    EXABYTE(Units.Exa.getVal() * BYTE.DATA, "ExaBytes"),
     /**
      * ZetaBytes 10^21 Bytes
      */
-    ZetaB(Units.Zeta.getVal() * Byte.DATA, "ZetaBytes"),
+    ZETABYTE(Units.Zeta.getVal() * BYTE.DATA, "ZetaBytes"),
     /**
      * YottaBytes 10^24 Bytes
      */
-    YottaB(Units.Yotta.getVal() * Byte.DATA, "YottaBytes"),;
+    YOTTABYTE(Units.Yotta.getVal() * BYTE.DATA, "YottaBytes"),;
     public final double DATA;
     public final String STR;
 
@@ -151,20 +147,20 @@ public enum Data {
         return DATA;
     }
 
-    public String getStr() {
+    public String toString() {
         return STR;
     }
     
     public static Object[][] getAllVars() {
-        Object Names[] = Data.values();
-        Object Vars[][] = new Object[Names.length][2];
+        Object names[] = Data.values();
+        Object vars[][] = new Object[names.length][2];
         int Index = 0;
         for (Data g : Data.values()) {
-            Vars[Index][0] = g.getStr();
-            Vars[Index][1] = g;
+            vars[Index][0] = g.toString();
+            vars[Index][1] = g;
             Index++;
         }
-        return Vars;
+        return vars;
     }
 
 }

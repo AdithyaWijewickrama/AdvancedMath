@@ -1,12 +1,12 @@
 package com.amath.advacedmath.convert;
 
 public enum Presure {
-    atmsp(101325,"Atmospheres"),
-    Bars(100000,"Bars"),
-    Kilopa(1000,"Kilopascals"),
-    miliMercury(133.3,"Milimeteres of mercury"),
-    Pascals(1,"Pascals"),
-    PpSI(6894.757,"Pounds per square inch");
+    ATM(101325,"Atmospheres"),
+    BAR(100000,"Bars"),
+    KP(1000,"Kilopascals"),
+    MILIMETERS_OF_MERCURY(133.3,"Milimeteres of mercury"),
+    PASCALS(1,"Pascals"),
+    POUNDS_PER_SQUARE_INCH(6894.757,"Pounds per square inch");
     private final double PRES;
     private final String STR;
 
@@ -19,20 +19,20 @@ public enum Presure {
         return PRES;
     }
 
-    public String getStr() {
+    public String toString() {
         return STR;
     }
 
     public static Object[][] getAllVars() {
-        Object Names[] = Presure.values();
-        Object Vars[][] = new Object[Names.length][2];
+        Object names[] = Presure.values();
+        Object vars[][] = new Object[names.length][2];
         int Index = 0;
         for (Presure g : Presure.values()) {
-            Vars[Index][0] = g.getStr();
-            Vars[Index][1] = g;
+            vars[Index][0] = g.toString();
+            vars[Index][1] = g;
             Index++;
         }
-        return Vars;
+        return vars;
     }
     
 }

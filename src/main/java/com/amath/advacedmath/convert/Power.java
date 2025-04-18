@@ -1,11 +1,11 @@
-package com.advancedMath.convert;
+package com.amath.advacedmath.convert;
 
 public enum Power {
-    W(1000, "Watts"),
-    kW(1,"kilo Watts"),
-    hp(1.341022,"Horse Power"),
-    fppm(44253.73,"Foot-pounds//Minute"),
-    BTUpm(56.86902,"BTUs//Minute"),
+    WATT(1000, "Watts"),
+    KILO_WATT(1,"kilo Watts"),
+    HORSE_POWER(1.341022,"Horse Power"),
+    FOOT_POUNDS_PER_MINUTE(44253.73,"Foot-pounds//Minute"),
+    BTUS_PER_MINUTE(56.86902,"BTUs//Minute"),
     ;
 
     private final double POWER;
@@ -25,15 +25,15 @@ public enum Power {
     }
     
     public static Object[][] getAllVars() {
-        Object Names[] = Power.values();
-        Object Vars[][] = new Object[Names.length][2];
+        Object names[] = Power.values();
+        Object vars[][] = new Object[names.length][2];
         int Index = 0;
         for (Power g : Power.values()) {
-            Vars[Index][0] = g.getStr();
-            Vars[Index][1] = g;
+            vars[Index][0] = g.getStr();
+            vars[Index][1] = g;
             Index++;
         }
-        return Vars;
+        return vars;
     }
     
 }

@@ -2,7 +2,6 @@ package com.amath.advacedmath.programmer;
 
 import static com.amath.advacedmath.programmer.Decimal.DecimaltoNBase;
 import static com.amath.advacedmath.programmer.Decimal.getDecimal;
-import com.amath.advacedmath.programmer.Base;
 
 public class BaseN {
 
@@ -16,15 +15,15 @@ public class BaseN {
         return DecimaltoNBase(getDecimal(a, base) + getDecimal(b, base), base);
     }
 
-    public String sub(String a, String b) {
+    public String substract(String a, String b) {
         return DecimaltoNBase(getDecimal(a, base) - getDecimal(b, base), base);
     }
 
-    public String div(String a, String b) {
+    public String divide(String a, String b) {
         return DecimaltoNBase(getDecimal(a, base) / getDecimal(b, base), base);
     }
 
-    public String mult(String a, String b) {
+    public String multiply(String a, String b) {
         return DecimaltoNBase(getDecimal(a, base) * getDecimal(b, base), base);
     }
 

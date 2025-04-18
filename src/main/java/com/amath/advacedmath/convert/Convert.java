@@ -1,15 +1,9 @@
 package com.amath.advacedmath.convert;
 
-import com.advancedMath.convert.Power;
-
-/**
- *
- * @author Adithya Wijewickrama
- */
 public class Convert {
 
     /**
-     *
+     * Converts speeds
      *
      * @param val Variable Value
      * @param flen first Displacement/length
@@ -31,17 +25,17 @@ public class Convert {
     }
 
     public static double temperature(double val, Temperature fTemp, Temperature sTemp) {
-        String fT = fTemp.getStr();
-        String sT = sTemp.getStr();
-        String C = Temperature.C.getStr();
-        String F = Temperature.F.getStr();
-        String K = Temperature.K.getStr();
+        String fT = fTemp.toString();
+        String sT = sTemp.toString();
+        String C = Temperature.CELCIUS.toString();
+        String F = Temperature.FAHRENHEIT.toString();
+        String K = Temperature.KELVIN.toString();
         val = fT.equals(C) && sT.equals(F) ? (val * 9 / 5) + 32
                 : fT.equals(C) && sT.equals(K) ? (val + 273.15)
                 : fT.equals(F) && sT.equals(C) ? (val - 32) * 5 / 9
-                : fT.equals(F) && sT.equals(K) ? temperature(temperature(val, Temperature.F, Temperature.C), Temperature.C, Temperature.K)
+                : fT.equals(F) && sT.equals(K) ? temperature(temperature(val, Temperature.FAHRENHEIT, Temperature.CELCIUS), Temperature.CELCIUS, Temperature.KELVIN)
                 : fT.equals(K) && sT.equals(C) ? val - 273.15
-                : fT.equals(K) && sT.equals(F) ? temperature(val - 273.15, Temperature.C, Temperature.F) : val;
+                : fT.equals(K) && sT.equals(F) ? temperature(val - 273.15, Temperature.CELCIUS, Temperature.FAHRENHEIT) : val;
         return val;
     }
 

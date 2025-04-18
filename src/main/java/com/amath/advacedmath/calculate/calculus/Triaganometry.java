@@ -18,7 +18,7 @@ public final class Triaganometry extends Function_ {
 
     public Triaganometry(TokenList fx, Token token) {
         super(token, fx);
-        setAngleType(Angle.radians);
+        setAngleType(Angle.RADIAN);
     }
 
     public void setAngleType(Angle angleType) {

@@ -1,17 +1,13 @@
 package com.amath.advacedmath.convert;
 
-/**
- *
- * @author Adithya Wijewickrama
- */
 public enum Energy {
 
-    eV(3.829294e-20, "Electron Volts"),
-    J(0.239006, "Jouls"),
-    kJ(Units.kilo.UNIT * J.ENERGY, "Kilo Jouls"),
-    tCal(1, "Thermal Calories"),
-    fCal(1000, "Food Calories"),
-    fp(0.324048, "Foot-Pounds"),
+    eVOLT(3.829294e-20, "Electron Volts"),
+    JOUL(0.239006, "Jouls"),
+    KILOJOUL(Units.kilo.UNIT * JOUL.ENERGY, "Kilo Jouls"),
+    THERMALCALORY(1, "Thermal Calories"),
+    FOODCALORY(1000, "Food Calories"),
+    FOOTPOUND(0.324048, "Foot-Pounds"),
     BTU(252.1644, "British thermal units(BTU)");
 
     public final double ENERGY;
@@ -26,19 +22,19 @@ public enum Energy {
         return ENERGY;
     }
 
-    public String getStr() {
+    public String toString() {
         return STR;
     }
 
     public static Object[][] getAllVars() {
-        Object Names[] = Energy.values();
-        Object Vars[][] = new Object[Names.length][2];
+        Object name[] = Energy.values();
+        Object vars[][] = new Object[name.length][2];
         int Index = 0;
         for (Energy g : Energy.values()) {
-            Vars[Index][0] = g.getStr();
-            Vars[Index][1] = g;
+            vars[Index][0] = g.toString();
+            vars[Index][1] = g;
             Index++;
         }
-        return Vars;
+        return vars;
     }
 }

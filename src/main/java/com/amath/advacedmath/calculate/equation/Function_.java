@@ -15,7 +15,7 @@ import com.amath.advacedmath.convert.Angle;
 public class Function_ extends Calculate {
 
     Token function_;
-    Angle angleType = Angle.radians;
+    Angle angleType = Angle.RADIAN;
 
     public Function_(Token function_, Calculate value) {
         super(value, TokenType.FUNCTION_);

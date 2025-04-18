@@ -2,9 +2,9 @@ package com.amath.advacedmath.convert;
 
 public enum Angle {
 
-    degrees(1, "Degrees"),
-    radians(degrees.ANG_IN_DEGREES * 57.29578, "Radians"),
-    gradians(degrees.ANG_IN_DEGREES * 0.9, "Gradians");
+    DEGREE(1, "Degrees"),
+    RADIAN(DEGREE.ANG_IN_DEGREES * 57.29578, "Radians"),
+    GRADIAN(DEGREE.ANG_IN_DEGREES * 0.9, "Gradians");
     private final double ANG_IN_DEGREES;
     private final String STR;
 
@@ -17,20 +17,20 @@ public enum Angle {
         return ANG_IN_DEGREES;
     }
 
-    public String getStr() {
+    public String toString() {
         return STR;
     }
 
     public static Object[][] getAllVars() {
-        Object Names[] = Angle.values();
-        Object Vars[][] = new Object[Names.length][2];
+        Object names[] = Angle.values();
+        Object vars[][] = new Object[names.length][2];
         int Index = 0;
         for (Angle g : Angle.values()) {
-            Vars[Index][0] = g.getStr();
-            Vars[Index][1] = g;
+            vars[Index][0] = g.toString();
+            vars[Index][1] = g;
             Index++;
         }
-        return Vars;
+        return vars;
     }
 
 }
