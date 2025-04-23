@@ -9,16 +9,13 @@ import com.amath.advacedmath.calculate.CNumber;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author AW Developer
- */
 public class Operator extends DifferentialCalculus {
 
     Token oparator;
 
     /**
-     * Begins the derivation between fx operator gx EX: f(x)=x, operator=^,
+     * Begins the derivation between fx operator gx 
+     * <br>EX: f(x)=x, operator=^,
      * g(x)=4 this will return 4*x^3
      *
      * @param fx

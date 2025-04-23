@@ -7,10 +7,6 @@ import com.amath.advacedmath.calculate.VariableList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author AW Developer
- */
 public class TokenParser extends TokenList {
 
     private final String exp;

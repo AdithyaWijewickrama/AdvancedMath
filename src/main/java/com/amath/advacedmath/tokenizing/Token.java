@@ -1,15 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Enum.java to edit this template
- */
 package com.amath.advacedmath.tokenizing;
 
 import com.amath.advacedmath.calculate.CNumber;
 
-/**
- *
- * @author AW Developer
- */
 public class Token {
 
     /**
@@ -17,9 +9,9 @@ public class Token {
      */
     public static Token PI = new Token(TokenType.NUMBER, "pi",'p', CNumber.parseNumber(Math.PI));
     /**
-     * CONSTANT--eēėê℮
+     * CONSTANT--℮
      */
-    public static Token e = new Token(TokenType.NUMBER, "e",'e', CNumber.parseNumber(Math.E));
+    public static Token e = new Token(TokenType.NUMBER, "e",'℮', CNumber.parseNumber(Math.E));
     /**
      * VARIABLE
      */

@@ -190,7 +190,7 @@ public class TokenList {
     public String toString() {
         String s = "";
         for (Token next : tokenList) {
-            s += next.toString();
+            s += next.toString()+"\n";
         }
         return s;
     }

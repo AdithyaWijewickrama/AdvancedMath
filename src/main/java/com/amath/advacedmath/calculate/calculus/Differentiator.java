@@ -12,10 +12,6 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author AW Developer
- */
 public final class Differentiator extends TokenParser {
 
     private ExpressionEvaluator expEv;
@@ -215,7 +211,9 @@ public final class Differentiator extends TokenParser {
         String cmd;
         OUTER:
         do {
-            System.out.print("\nGive an function to differentiate:\n\t"+"Differentiator.java:218");
+            System.out.print("""
+                             Give an function to differentiate:
+                             \t""");
             cmd = s.nextLine();
             if (cmd.isEmpty()) {
                 continue;
