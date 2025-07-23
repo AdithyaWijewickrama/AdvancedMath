@@ -13,10 +13,15 @@ import com.amath.advacedmath.programmer.WordSize;
  */
 public class CNumber {
 //max 2^33219
+
     private String numberString;
     private NumberFormat numberFormat;
     private BigDecimal number;
     private WordSize wordSize = null;
+
+    public static final CNumber ZERO = new CNumber(0);
+    public static final CNumber ONE = new CNumber(1);
+    public static final CNumber TEN = new CNumber(10);
 
     /**
      * <p>
@@ -44,7 +49,7 @@ public class CNumber {
     public CNumber(String numberInFormat, NumberFormat format) throws Exception {
         this.numberString = numberInFormat;
         this.numberFormat = format;
-        this.number = format.convRadixToDecimal(numberInFormat,null);
+        this.number = format.convRadixToDecimal(numberInFormat, null);
 //        System.out.println("Decimal:" + number);
     }
 
@@ -52,7 +57,7 @@ public class CNumber {
         this.numberString = numberInFormat;
         this.wordSize = wordSize;
         this.numberFormat = format;
-        this.number = format.convRadixToDecimal(numberInFormat,wordSize);
+        this.number = format.convRadixToDecimal(numberInFormat, wordSize);
 //        System.out.println("Decimal:" + number);
     }
 
@@ -133,7 +138,7 @@ public class CNumber {
 
     public String getOctalValue() {
         try {
-            return numberFormat.convDecimalToRadix(number,wordSize);
+            return numberFormat.convDecimalToRadix(number, wordSize);
         } catch (Exception ex) {
             Logger.getLogger(CNumber.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -183,10 +188,10 @@ public class CNumber {
 //        System.out.println(NORMAL_BINARY.convRadixToDecimal(NORMAL_BINARY.convDecimalToRadix(new BigDecimal("-2215"), WordSize.WORD), WordSize.WORD));
 //        System.out.println(NORMAL_BINARY.convRadixToDecimal("10111100001", WordSize.WORD).toString());
             CNumber n = new CNumber("9275", NumberFormat.NORMAL_DECIMAL);
-            System.out.println("add:"+n.add(n).number);
-            System.out.println("substract:"+n.substract(n).number);
-            System.out.println("multiply:"+n.multiply(n).number);
-            System.out.println("divide:"+n.divide(n).number);
+            System.out.println("add:" + n.add(n).number);
+            System.out.println("substract:" + n.substract(n).number);
+            System.out.println("multiply:" + n.multiply(n).number);
+            System.out.println("divide:" + n.divide(n).number);
 
             for (NumberFormat f : NumberFormat.values()) {
                 System.out.println(f.toString());

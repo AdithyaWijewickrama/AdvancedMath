@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 
 public class TokenParser extends TokenList {
 
-    private final String exp;
+    private String exp;
     private VariableList variableList;
 
     public TokenParser(String exp) {
@@ -26,6 +26,7 @@ public class TokenParser extends TokenList {
     }
 
     public final void updateTokens(TokenList tokenList) throws Exception {
+        this.exp=tokenList.toLocalString();
         checkPranthesis(tokenList);
         substituteVars();
         ignoreZero();
@@ -206,7 +207,7 @@ public class TokenParser extends TokenList {
             Token t = new Token(tokenAt(i));
             if (t.type == TokenType.NUMBER) {
                 OUTER:
-                if (t.number.doubleValue() == 0.) {
+                if (t.number.equalsTo(CNumber.ZERO)) {
                     if (next(t, i)) {
                         if (t.equalsTo(Token.RAISED)) {
                             int size = ExpressionEvaluator.getParameter(this, i + 2).size();
@@ -358,7 +359,7 @@ public class TokenParser extends TokenList {
         for (Token next : tokenList) {
             s += next.toLocalString();
         }
-        return String.format("Expression:%s\nToken Llist:%s", exp, s);
+        return String.format("Expression:%s\nToken List:%s", exp, s);
     }
 
     public static void main(String[] args) {
