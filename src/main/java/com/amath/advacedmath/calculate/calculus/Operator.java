@@ -9,24 +9,33 @@ import com.amath.advacedmath.calculate.CNumber;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Represents an operator used in differential calculus.
+ * This class handles operations such as multiplication, division, and exponentiation
+ * between two mathematical expressions.
+ */
 public class Operator extends DifferentialCalculus {
 
     Token oparator;
 
     /**
-     * Begins the derivation between fx operator gx 
-     * <br>EX: f(x)=x, operator=^,
-     * g(x)=4 this will return 4*x^3
+     * Initializes an Operator instance to perform operations between two expressions.
+     * <br>Example: f(x) = x, operator = ^, g(x) = 4 will return 4 * x^3.
      *
-     * @param fx
-     * @param operator
-     * @param gx
+     * @param fx       The first expression (f(x)).
+     * @param operator The operator to be applied (e.g., ^, *, /).
+     * @param gx       The second expression (g(x)).
      */
     public Operator(TokenList fx, Token operator, TokenList gx) {
         super(fx, TokenType.OPARATOR, gx);
         this.oparator = operator;
     }
 
+    /**
+     * Constructs the mathematical expression represented by this operator.
+     *
+     * @return A {@link TokenList} representing the full expression (e.g., f(x) ^ g(x)).
+     */
     public TokenList getExpression() {
         TokenList tk = new TokenList();
         tk.addTokens(fx);
@@ -35,6 +44,12 @@ public class Operator extends DifferentialCalculus {
         return tk;
     }
 
+    /**
+     * Performs the mathematical operation represented by this operator.
+     * Handles cases for exponentiation, multiplication, division, and other operators.
+     *
+     * @return A {@link TokenList} representing the result of the operation.
+     */
     @Override
     public TokenList doTheMath() {
         TokenList tk = new TokenList();
@@ -137,6 +152,12 @@ public class Operator extends DifferentialCalculus {
         return tk;
     }
 
+    /**
+     * Main method for testing the Operator class.
+     * Demonstrates differentiation of an example expression.
+     *
+     * @param args Command-line arguments (not used).
+     */
     public static void main(String[] args) {
         try {
             Differentiator d = new Differentiator("x^-1");
