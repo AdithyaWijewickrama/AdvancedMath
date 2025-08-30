@@ -1,7 +1,5 @@
 package com.amath.advacedmath.programmer;
 
-import com.advancedMath.programmer.BitRange;
-
 /**
  *
  * @author AW Developer

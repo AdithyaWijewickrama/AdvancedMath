@@ -1,4 +1,4 @@
-package com.advancedMath.programmer;
+package com.amath.advacedmath.programmer;
 
 /**
  *
