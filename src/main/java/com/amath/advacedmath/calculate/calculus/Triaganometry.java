@@ -37,32 +37,32 @@ public final class Triaganometry extends Function_ {
             if (function_ == COS) {
                 t.addToken(MINUS);
                 t.addToken(SIN);
-                t.addTokens(fx.pranthesise());
+                t.addTokens(fx.pranthesize());
             } else if (function_ == SIN) {
                 t.addToken(COS);
-                t.addTokens(fx.pranthesise());
+                t.addTokens(fx.pranthesize());
             } else if (function_ == TAN) {
                 t.addToken(SEC);
-                t.addTokens(fx.pranthesise());
+                t.addTokens(fx.pranthesize());
                 t.addToken(RAISED);
                 t.addToken(TWO);
             } else if (function_ == SEC) {
                 t.addToken(SEC);
-                t.addTokens(fx.pranthesise());
+                t.addTokens(fx.pranthesize());
                 t.addToken(MULTIPLY);
                 t.addToken(TAN);
-                t.addTokens(fx.pranthesise());
+                t.addTokens(fx.pranthesize());
             } else if (function_ == CSC) {
                 t.addToken(MINUS);
                 t.addToken(CSC);
-                t.addTokens(fx.pranthesise());
+                t.addTokens(fx.pranthesize());
                 t.addToken(MULTIPLY);
                 t.addToken(COT);
-                t.addTokens(fx.pranthesise());
+                t.addTokens(fx.pranthesize());
             } else if (function_ == COT) {
                 t.addToken(MINUS);
                 t.addToken(CSC);
-                t.addTokens(fx.pranthesise());
+                t.addTokens(fx.pranthesize());
                 t.addToken(RAISED);
                 t.addToken(TWO);
             } else if (function_ == ACOS) {
@@ -72,7 +72,7 @@ public final class Triaganometry extends Function_ {
                 t.addToken(RECIPROCAL);
                 t.addToken(SQUREROOT);
                 t.addToken(OPEN_PRANTHESIS);
-                t.addTokens(fx.pranthesise());
+                t.addTokens(fx.pranthesize());
                 t.addToken(RAISED);
                 t.addToken(TWO);
                 t.addToken(MINUS);
@@ -81,7 +81,7 @@ public final class Triaganometry extends Function_ {
             } else if (function_ == ATAN) {
                 t.addToken(RECIPROCAL);
                 t.addToken(OPEN_PRANTHESIS);
-                t.addTokens(fx.pranthesise());
+                t.addTokens(fx.pranthesize());
                 t.addToken(RAISED);
                 t.addToken(TWO);
                 t.addToken(PLUS);
@@ -92,14 +92,14 @@ public final class Triaganometry extends Function_ {
                 t.addToken(OPEN_PRANTHESIS);
                 t.addToken(SQUREROOT);
                 t.addToken(OPEN_PRANTHESIS);
-                t.addTokens(fx.pranthesise());
+                t.addTokens(fx.pranthesize());
                 t.addToken(RAISED);
                 t.addToken(TWO);
                 t.addToken(MINUS);
                 t.addToken(ONE);
                 t.addToken(CLOSE_PRANTHESIS);
                 t.addToken(MULTIPLY);
-                t.addTokens(fx.pranthesise());
+                t.addTokens(fx.pranthesize());
                 t.addToken(CLOSE_PRANTHESIS);
             } else if (function_ == ACSC) {
                 t = new Triaganometry(fx, ASEC).doTheMath();
@@ -136,7 +136,7 @@ public final class Triaganometry extends Function_ {
             }
 
             t.addToken(MULTIPLY);
-            t.addTokens(new Differentiator(fx).differentiate(1).pranthesise());
+            t.addTokens(new Differentiator(fx).differentiate(1).pranthesize());
         } catch (Exception ex) {
             makeError(ex);
         }

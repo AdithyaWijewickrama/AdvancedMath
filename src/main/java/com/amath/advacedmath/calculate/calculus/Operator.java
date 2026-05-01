@@ -31,7 +31,7 @@ public class Operator extends DifferentialCalculus {
         TokenList tk = new TokenList();
         tk.addTokens(fx);
         tk.addToken(RAISED);
-        tk.addTokens(gx.pranthesise());
+        tk.addTokens(gx.pranthesize());
         return tk;
     }
 
@@ -44,10 +44,10 @@ public class Operator extends DifferentialCalculus {
                     CNumber n = new ExpressionEvaluator(gx).evaluate();
                     tk.addToken(new Token(n));
                     tk.addToken(MULTIPLY);
-                    tk.addTokens(fx.pranthesise());
+                    tk.addTokens(fx.pranthesize());
                     tk.addToken(MULTIPLY);
                     n = n.substract(CNumber.parseNumber(1));
-                    tk.addTokens(new Differentiator(fx).differentiate(1).pranthesise());
+                    tk.addTokens(new Differentiator(fx).differentiate(1).pranthesize());
                     if (n.doubleValue() != 1) {
                         tk.addToken(RAISED);
                         tk.addToken(new Token(n));
@@ -59,25 +59,25 @@ public class Operator extends DifferentialCalculus {
                     tk.addToken(new Token(n));
                     tk.addToken(CLOSE_PRANTHESIS);
                     tk.addToken(MULTIPLY);
-                    tk.addTokens(gx.pranthesise());
+                    tk.addTokens(gx.pranthesize());
                     tk.addToken(MULTIPLY);
                     tk.addTokens(new Differentiator(gx).differentiate(1));
                 } else {
                     tk.addTokens(fx);
                     tk.addToken(RAISED);
-                    tk.addTokens(gx.pranthesise());
+                    tk.addTokens(gx.pranthesize());
                     tk.addToken(MULTIPLY);
                     tk.addToken(Token.OPEN_PRANTHESIS);
                     tk.addTokens(new Differentiator(gx).differentiate(1));
                     tk.addToken(MULTIPLY);
                     tk.addToken(Token.LN);
-                    tk.addTokens(fx.pranthesise());
+                    tk.addTokens(fx.pranthesize());
                     tk.addToken(PLUS);
                     tk.addTokens(gx);
                     tk.addToken(MULTIPLY);
                     tk.addTokens(new Differentiator(fx).differentiate(1));
                     tk.addToken(DIVIDE);
-                    tk.addTokens(fx.pranthesise());
+                    tk.addTokens(fx.pranthesize());
                     tk.addToken(Token.CLOSE_PRANTHESIS);
                 }
             } else if (operator == MULTIPLY) {
@@ -123,7 +123,7 @@ public class Operator extends DifferentialCalculus {
                 tk.addTokens(fx);
                 tk.addToken(Token.CLOSE_PRANTHESIS);
                 tk.addToken(DIVIDE);
-                tk.addTokens(gx.pranthesise());
+                tk.addTokens(gx.pranthesize());
                 tk.addToken(RAISED);
                 tk.addToken(TWO);
             } else {

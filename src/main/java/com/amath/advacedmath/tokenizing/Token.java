@@ -450,7 +450,7 @@ public class Token {
             case NUMBER:
                 return String.format("<NUMBER-%s>", number.getNumberString());
             default:
-                return String.format("<%s-%s>", type.toString(), name);
+                return String.format("<%s-%s>", type, name);
         }
     }
 

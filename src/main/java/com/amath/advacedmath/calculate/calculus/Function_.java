@@ -78,14 +78,14 @@ public class Function_ extends DifferentialCalculus {
                 return new _Function_(LOGBASEY, t, fx).doTheMath();
             } else if (function_ == LN) {
                 t.addToken(RECIPROCAL);
-                t.addTokens(fx.pranthesise());
+                t.addTokens(fx.pranthesize());
             } else if (function_ == RECIPROCAL) {
                 t.addToken(RECIPROCAL);
                 t.addToken(OPEN_PRANTHESIS);
                 t.addTokens(fx);
                 t.addToken(CLOSE_PRANTHESIS);
             }  else {
-                makeError("Unsuppported token");
+                makeError("Unsupported token");
             }
             t.addToken(MULTIPLY);
             t.addTokens(new Differentiator(t).differentiate(1));
@@ -95,5 +95,4 @@ public class Function_ extends DifferentialCalculus {
         }
         return null;
     }
-
 }

@@ -31,18 +31,18 @@ public class _Function_ extends DifferentialCalculus {
                 t.addTokens(new Differentiator(gx).differentiate(1));
                 t.addToken(MULTIPLY);
                 t.addToken(LN);
-                t.addTokens(fx.pranthesise());
+                t.addTokens(fx.pranthesize());
                 t.addToken(MINUS);
                 t.addTokens(fx.reciprocal());
                 t.addToken(MULTIPLY);
                 t.addTokens(new Differentiator(fx).differentiate(1));
                 t.addToken(MULTIPLY);
                 t.addToken(LN);
-                t.addTokens(gx.pranthesise());
+                t.addTokens(gx.pranthesize());
                 t.addToken(CLOSE_PRANTHESIS);
                 t.addToken(DIVIDE);
                 t.addToken(LN);
-                t.addTokens(gx.pranthesise());
+                t.addTokens(gx.pranthesize());
                 t.addToken(RAISED);
                 t.addToken(TWO);
             } else {

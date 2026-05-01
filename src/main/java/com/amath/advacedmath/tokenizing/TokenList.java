@@ -89,13 +89,13 @@ public class TokenList {
         tokenList.add(t);
     }
 
-    public static TokenList pranthesiseThis(TokenList tl) {
+    public static TokenList pranthesizeThis(TokenList tl) {
         tl.insertToken(Token.OPEN_PRANTHESIS, 0);
         tl.addToken(Token.CLOSE_PRANTHESIS);
         return tl;
     }
 
-    public TokenList pranthesise() {
+    public TokenList pranthesize() {
         TokenList t = getTokenListCopy();
         t.insertToken(Token.OPEN_PRANTHESIS, 0);
         t.addToken(Token.CLOSE_PRANTHESIS);
@@ -104,13 +104,13 @@ public class TokenList {
 
     public TokenList reciprocal() {
         TokenList t = getTokenListCopy();
-        t = t.pranthesise();
+        t = t.pranthesize();
         t.insertToken(Token.RECIPROCAL, 0);
         return t;
     }
 
     public static TokenList reciprocalThis(TokenList t) {
-        t.pranthesise();
+        t.pranthesize();
         t.insertToken(Token.RECIPROCAL, 0);
         return t;
     }
@@ -186,6 +186,26 @@ public class TokenList {
         return tl;
     }
 
+    public void removeAll(TokenList tl){
+        int i=0;
+        while(i<=size()-tl.size()){
+            boolean sim=true;
+            for (int j = 0; j < tl.size(); j++) {
+                if(!tokenAt(i+j).equalsTo(tl.tokenAt(j))){
+                    sim=false;
+                    break;
+                }
+            }
+            if(sim){
+                for (int j = 0; j < tl.size(); j++) {
+                    deleteToken(i);
+                }
+            }else{
+                i++;
+            }
+        }
+    }
+
     @Override
     public String toString() {
         String s = "";
@@ -200,7 +220,27 @@ public class TokenList {
         for (Token next : tokenList) {
             s += next.toLocalString();
         }
+
         return s;
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        if(obj instanceof TokenList){
+            TokenList tl=(TokenList) obj;
+            if(tl.size()==size()){
+                for (int i = 0; i < size(); i++) {
+                    if(!tokenAt(i).equalsTo(tl.tokenAt(i))){
+                        return false;
+                    }
+                }
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
     }
 
     public static void main(String[] args) {

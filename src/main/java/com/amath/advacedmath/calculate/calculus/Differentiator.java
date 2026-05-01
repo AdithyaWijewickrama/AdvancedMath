@@ -221,6 +221,8 @@ public final class Differentiator extends TokenParser {
             try {
                 t = new Differentiator(cmd);
                 t.differentiate(1);
+                t.removeAll(new TokenList(Token.OPEN_PRANTHESIS,Token.MINUS,new Token(TokenType.NUMBER,CNumber.ONE),Token.CLOSE_PRANTHESIS,Token.MULTIPLY));
+                t.removeAll(new TokenList(Token.MULTIPLY,Token.OPEN_PRANTHESIS,new Token(TokenType.NUMBER,CNumber.ONE),Token.CLOSE_PRANTHESIS));
                 System.out.println(t.toLocalString());
                 System.out.print("\nv value for evaluate, n for next, any key for exit):\n\t");
                 cmd = s.nextLine();
