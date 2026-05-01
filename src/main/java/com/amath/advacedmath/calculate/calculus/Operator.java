@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 
 public class Operator extends DifferentialCalculus {
 
-    Token oparator;
+    Token operator;
 
     /**
      * Begins the derivation between fx operator gx 
@@ -24,7 +24,7 @@ public class Operator extends DifferentialCalculus {
      */
     public Operator(TokenList fx, Token operator, TokenList gx) {
         super(fx, TokenType.OPARATOR, gx);
-        this.oparator = operator;
+        this.operator = operator;
     }
 
     public TokenList getExpression() {
@@ -39,13 +39,15 @@ public class Operator extends DifferentialCalculus {
     public TokenList doTheMath() {
         TokenList tk = new TokenList();
         try {
-            if (oparator == RAISED) {
+            if (operator == RAISED) {
                 if ((fx.hasIndependent() || fx.hasDependent()) && !(gx.hasIndependent() || gx.hasDependent())) {
                     CNumber n = new ExpressionEvaluator(gx).evaluate();
                     tk.addToken(new Token(n));
                     tk.addToken(MULTIPLY);
                     tk.addTokens(fx.pranthesise());
+                    tk.addToken(MULTIPLY);
                     n = n.substract(CNumber.parseNumber(1));
+                    tk.addTokens(new Differentiator(fx).differentiate(1).pranthesise());
                     if (n.doubleValue() != 1) {
                         tk.addToken(RAISED);
                         tk.addToken(new Token(n));
@@ -78,7 +80,7 @@ public class Operator extends DifferentialCalculus {
                     tk.addTokens(fx.pranthesise());
                     tk.addToken(Token.CLOSE_PRANTHESIS);
                 }
-            } else if (oparator == MULTIPLY) {
+            } else if (operator == MULTIPLY) {
                 if ((fx.hasIndependent() || fx.hasDependent()) && (gx.hasIndependent() || gx.hasDependent())) {
                     tk.addTokens(new Differentiator(fx).differentiate(1));
                     tk.addToken(MULTIPLY);
@@ -110,7 +112,7 @@ public class Operator extends DifferentialCalculus {
                         }
                     }
                 }
-            } else if (oparator == DIVIDE) {
+            } else if (operator == DIVIDE) {
                 tk.addToken(Token.OPEN_PRANTHESIS);
                 tk.addTokens(new Differentiator(fx).differentiate(1));
                 tk.addToken(MULTIPLY);
@@ -126,14 +128,14 @@ public class Operator extends DifferentialCalculus {
                 tk.addToken(TWO);
             } else {
                 tk.addTokens((new Differentiator(fx).differentiate(1)));
-                tk.addToken(oparator);
+                tk.addToken(operator);
                 tk.addTokens((new Differentiator(gx).differentiate(1)));
             }
 
         } catch (Exception ex) {
             makeError(ex);
         }
-        System.out.println("[OPARATION DONE]" + tk.toLocalString());
+        System.out.println("[OPERATION DONE]" + tk.toLocalString());
         return tk;
     }
 

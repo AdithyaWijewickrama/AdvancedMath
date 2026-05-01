@@ -27,7 +27,7 @@ public final class Differentiator extends TokenParser {
 
     public TokenList differentiate(int coefficient) throws Exception {
         if(coefficient <0){
-            throw new RuntimeException("Cannot have a negetive coefficient");
+            throw new RuntimeException("Cannot have a negative coefficient");
         }
         if (coefficient == 0) {
             return this;
@@ -221,25 +221,24 @@ public final class Differentiator extends TokenParser {
             try {
                 t = new Differentiator(cmd);
                 t.differentiate(1);
-//                System.out.print("\nValue at/(n for next space for extit):\n\t");
-//                cmd = s.nextLine();
-//                switch (cmd) {
-//                    case "c":
-//                        break OUTER;
-//                    case " ":
-//                        break;
-//                }
-//                CNumber n = new CNumber(cmd, com.calculate.NumberFormat.NORMAL_DECIMAL);
-//                CNumber n1 = t.evaluateAt(n);
-//                System.out.print("\nValue at x=" + n.getNumberString() + ":\n\t");
-
-//                System.out.print(n1.doubleValue());
-            } catch (ParseException ex) {
-                Logger.getLogger(Differentiator.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println(t.toLocalString());
+                System.out.print("\nv value for evaluate, n for next, any key for exit):\n\t");
+                cmd = s.nextLine();
+                switch (cmd) {
+                    case "n":
+                        continue;
+                    case "v":
+                        break;
+                    default:
+                        break OUTER;
+                }
+                CNumber n = new CNumber(s.nextLine(), com.amath.advacedmath.calculate.NumberFormat.NORMAL_DECIMAL);
+                CNumber n1 = t.evaluateAt(n);
+                System.out.print("\nValue at x=" + n.getNumberString() + ":\n\t");
+                System.out.print(n1.doubleValue());
             } catch (Exception ex) {
                 Logger.getLogger(Differentiator.class.getName()).log(Level.SEVERE, null, ex);
             }
         } while (true);
     }
-
 }
