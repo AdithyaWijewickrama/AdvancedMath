@@ -1,0 +1,151 @@
+package com.awapps.advancedmath.calculate.calculus;
+
+import com.awapps.advancedmath.tokenizing.Token;
+import static com.awapps.advancedmath.tokenizing.Token.*;
+import com.awapps.advancedmath.tokenizing.TokenList;
+import com.awapps.advancedmath.tokenizing.TokenType;
+import com.awapps.advancedmath.calculate.equation.ExpressionEvaluator;
+import com.awapps.advancedmath.calculate.CNumber;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class Operator extends DifferentialCalculus {
+
+    Token operator;
+
+    /**
+     * Begins the derivation between fx operator gx 
+     * <br>EX: f(x)=x, operator=^,
+     * g(x)=4 this will return 4*x^3
+     *
+     * @param fx
+     * @param operator
+     * @param gx
+     */
+    public Operator(TokenList fx, Token operator, TokenList gx) {
+        super(fx, TokenType.OPARATOR, gx);
+        this.operator = operator;
+    }
+
+    public TokenList getExpression() {
+        TokenList tk = new TokenList();
+        tk.addTokens(fx);
+        tk.addToken(RAISED);
+        tk.addTokens(gx.pranthesize());
+        return tk;
+    }
+
+    @Override
+    public TokenList doTheMath() {
+        TokenList tk = new TokenList();
+        try {
+            if (operator == RAISED) {
+                if ((fx.hasIndependent() || fx.hasDependent()) && !(gx.hasIndependent() || gx.hasDependent())) {
+                    CNumber n = new ExpressionEvaluator(gx).evaluate();
+                    tk.addToken(new Token(n));
+                    tk.addToken(MULTIPLY);
+                    tk.addTokens(fx.pranthesize());
+                    tk.addToken(MULTIPLY);
+                    n = n.substract(CNumber.parseNumber(1));
+                    tk.addTokens(new Differentiator(fx).differentiate(1).pranthesize());
+                    if (n.doubleValue() != 1) {
+                        tk.addToken(RAISED);
+                        tk.addToken(new Token(n));
+                    }
+                } else if (!fx.hasIndependent() && !fx.hasDependent() && (gx.hasIndependent() || gx.hasDependent())) {
+                    CNumber n = new ExpressionEvaluator(fx).evaluate();
+                    tk.addToken(LN);
+                    tk.addToken(OPEN_PRANTHESIS);
+                    tk.addToken(new Token(n));
+                    tk.addToken(CLOSE_PRANTHESIS);
+                    tk.addToken(MULTIPLY);
+                    tk.addTokens(gx.pranthesize());
+                    tk.addToken(MULTIPLY);
+                    tk.addTokens(new Differentiator(gx).differentiate(1));
+                } else {
+                    tk.addTokens(fx);
+                    tk.addToken(RAISED);
+                    tk.addTokens(gx.pranthesize());
+                    tk.addToken(MULTIPLY);
+                    tk.addToken(Token.OPEN_PRANTHESIS);
+                    tk.addTokens(new Differentiator(gx).differentiate(1));
+                    tk.addToken(MULTIPLY);
+                    tk.addToken(Token.LN);
+                    tk.addTokens(fx.pranthesize());
+                    tk.addToken(PLUS);
+                    tk.addTokens(gx);
+                    tk.addToken(MULTIPLY);
+                    tk.addTokens(new Differentiator(fx).differentiate(1));
+                    tk.addToken(DIVIDE);
+                    tk.addTokens(fx.pranthesize());
+                    tk.addToken(Token.CLOSE_PRANTHESIS);
+                }
+            } else if (operator == MULTIPLY) {
+                if ((fx.hasIndependent() || fx.hasDependent()) && (gx.hasIndependent() || gx.hasDependent())) {
+                    tk.addTokens(new Differentiator(fx).differentiate(1));
+                    tk.addToken(MULTIPLY);
+                    tk.addTokens(gx);
+                    tk.addToken(PLUS);
+                    tk.addTokens(new Differentiator(gx).differentiate(1));
+                    tk.addToken(MULTIPLY);
+                    tk.addTokens(fx);
+                } else {
+                    if (!(fx.hasIndependent() || fx.hasDependent())) {
+                        CNumber evaluate = new ExpressionEvaluator(fx).evaluate();
+                        Token etoken = new Token(TokenType.NUMBER, evaluate);
+                        if (evaluate.doubleValue() == 0) {
+                            tk.addToken(etoken);
+                        } else {
+                            tk.addToken(etoken);
+                            tk.addToken(MULTIPLY);
+                            tk.addTokens(new Differentiator(gx).differentiate(1));
+                        }
+                    } else if (!(gx.hasIndependent() || gx.hasDependent())) {
+                        CNumber evaluate = new ExpressionEvaluator(gx).evaluate();
+                        Token etoken = new Token(TokenType.NUMBER, evaluate);
+                        if (evaluate.doubleValue() == 0) {
+                            tk.addToken(etoken);
+                        } else {
+                            tk.addToken(etoken);
+                            tk.addToken(MULTIPLY);
+                            tk.addTokens(new Differentiator(fx).differentiate(1));
+                        }
+                    }
+                }
+            } else if (operator == DIVIDE) {
+                tk.addToken(Token.OPEN_PRANTHESIS);
+                tk.addTokens(new Differentiator(fx).differentiate(1));
+                tk.addToken(MULTIPLY);
+                tk.addTokens(gx);
+                tk.addToken(MINUS);
+                tk.addTokens(new Differentiator(gx).differentiate(1));
+                tk.addToken(MULTIPLY);
+                tk.addTokens(fx);
+                tk.addToken(Token.CLOSE_PRANTHESIS);
+                tk.addToken(DIVIDE);
+                tk.addTokens(gx.pranthesize());
+                tk.addToken(RAISED);
+                tk.addToken(TWO);
+            } else {
+                tk.addTokens((new Differentiator(fx).differentiate(1)));
+                tk.addToken(operator);
+                tk.addTokens((new Differentiator(gx).differentiate(1)));
+            }
+
+        } catch (Exception ex) {
+            makeError(ex);
+        }
+        System.out.println("[OPERATION DONE]" + tk.toLocalString());
+        return tk;
+    }
+
+    public static void main(String[] args) {
+        try {
+            Differentiator d = new Differentiator("x^-1");
+            TokenList dt = d.differentiate(1);
+            System.out.println(dt.toLocalString());
+        } catch (Exception ex) {
+            Logger.getLogger(Operator.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+}
