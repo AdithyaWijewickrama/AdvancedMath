@@ -219,7 +219,7 @@ public class ExpressionEvaluator extends TokenParser {
 
     public static void main(String[] args) {
         try {
-            //        print(new ExpressionEvaluator("log(x^2,8)").evaluateAt(CNumber.parseNumber(2.)).doubleValue());
+//            print(new ExpressionEvaluator("log(x^2,8)").evaluateAt(CNumber.parseNumber(2.)).doubleValue());
             ExpressionEvaluator e = new ExpressionEvaluator("x^3-1");
             e.parseTokens();
             System.out.println(e.parsedTokens);
