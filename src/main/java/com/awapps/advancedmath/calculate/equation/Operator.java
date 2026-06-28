@@ -17,63 +17,63 @@ import static com.awapps.advancedmath.tokenizing.Token.MULTIPLY;
  *
  * @author AW Developer
  */
-public class Oparator extends Calculate {
+public class Operator extends Calculate {
 
-    Token oparator;
+    Token operator;
 
-    public Oparator(Calculate v1, Token oparator, Calculate v2) {
+    public Operator(Calculate v1, Token operator, Calculate v2) {
         super(v1, TokenType.OPARATOR, v2);
-        this.oparator = oparator;
+        this.operator = operator;
     }
 
-    public String toLatex(){
+    public CNumber toLatex(){
         try {
-            if (oparator == PLUS) {
-                return
+            if (operator == PLUS) {
+                return CNumber.parseNumber(Double.sum(value1.doTheMath().doubleValue(), value2.doTheMath().doubleValue()));
             }
-            if (oparator == MINUS) {
+            if (operator == MINUS) {
                 return CNumber.parseNumber(Double.sum(value1.doTheMath().doubleValue(), -value2.doTheMath().doubleValue()));
             }
-            if (oparator == RAISED) {
+            if (operator == RAISED) {
                 return CNumber.parseNumber(Math.pow(value1.doTheMath().doubleValue(), value2.doTheMath().doubleValue()));
             }
-            if (oparator == MULTIPLY) {
+            if (operator == MULTIPLY) {
                 return CNumber.parseNumber(value1.doTheMath().doubleValue() * value2.doTheMath().doubleValue());
             }
-            if (oparator == DIVIDE) {
+            if (operator == DIVIDE) {
                 return CNumber.parseNumber(value1.doTheMath().doubleValue() / value2.doTheMath().doubleValue());
             } else {
                 throw new AssertionError();
             }
         } catch (AssertionError assertionError) {
-            Logger.getLogger(Oparator.class.getName()).log(Level.SEVERE,null,assertionError);
+            Logger.getLogger(Operator.class.getName()).log(Level.SEVERE,null,assertionError);
         }
 
-        return null;d
+        return null;
     }
 
     @Override
     public CNumber doTheMath() {
         try {
-            if (oparator == PLUS) {
+            if (operator == PLUS) {
                 return CNumber.parseNumber(Double.sum(value1.doTheMath().doubleValue(), value2.doTheMath().doubleValue()));
             }
-            if (oparator == MINUS) {
+            if (operator == MINUS) {
                 return CNumber.parseNumber(Double.sum(value1.doTheMath().doubleValue(), -value2.doTheMath().doubleValue()));
             }
-            if (oparator == RAISED) {
+            if (operator == RAISED) {
                 return CNumber.parseNumber(Math.pow(value1.doTheMath().doubleValue(), value2.doTheMath().doubleValue()));
             }
-            if (oparator == MULTIPLY) {
+            if (operator == MULTIPLY) {
                 return CNumber.parseNumber(value1.doTheMath().doubleValue() * value2.doTheMath().doubleValue());
             }
-            if (oparator == DIVIDE) {
+            if (operator == DIVIDE) {
                 return CNumber.parseNumber(value1.doTheMath().doubleValue() / value2.doTheMath().doubleValue());
             } else {
                 throw new AssertionError();
             }
         } catch (AssertionError assertionError) {
-            Logger.getLogger(Oparator.class.getName()).log(Level.SEVERE,null,assertionError);
+            Logger.getLogger(Operator.class.getName()).log(Level.SEVERE,null,assertionError);
         }
 
         return null;

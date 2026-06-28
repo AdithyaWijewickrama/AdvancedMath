@@ -73,17 +73,17 @@ public class ExpressionEvaluator extends TokenParser {
         index = scanFor(tokens, Token.PLUS);
         if (index != -1) {
             token = tokens.tokenAt(index);
-            c = new Oparator(doOparations(tokens.split(0, index)), token, doOparations(tokens.split(index + 1, tokens.size())));
+            c = new Operator(doOparations(tokens.split(0, index)), token, doOparations(tokens.split(index + 1, tokens.size())));
         } else {
             index = scanFor(tokens, Token.MINUS);
             if (index != -1) {
                 token = tokens.tokenAt(index);
-                c = new Oparator(doOparations(tokens.split(0, index)), token, doOparations(tokens.split(index + 1, tokens.size())));
+                c = new Operator(doOparations(tokens.split(0, index)), token, doOparations(tokens.split(index + 1, tokens.size())));
             } else {
                 index = scanFor(tokens, TokenType.OPARATOR);
                 if (index != -1) {
                     token = tokens.tokenAt(index);
-                    c = new Oparator(doOparations(tokens.split(0, index)), token, doOparations(tokens.split(index + 1, tokens.size())));
+                    c = new Operator(doOparations(tokens.split(0, index)), token, doOparations(tokens.split(index + 1, tokens.size())));
                 } else {
                     index = scanFor(tokens, TokenType.FUNCTION_);
                     if (index != -1) {
