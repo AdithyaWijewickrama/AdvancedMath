@@ -9,6 +9,7 @@ import com.awapps.advancedmath.calculate.Root;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,12 +25,13 @@ public class ExpressionEvaluator extends TokenParser {
 
     public ExpressionEvaluator(String exp) throws Exception {
         super(exp);
-        parsedTokens = doOparations(this);
+        parse();
+        parsedTokens = doOperations(this);
     }
 
     public ExpressionEvaluator(TokenList exp) throws Exception {
-        super(exp);
-        parsedTokens = doOparations(this);
+        super(exp);parse();
+        parsedTokens = doOperations(this);
     }
 
     public CNumber evaluate() {
@@ -60,10 +62,10 @@ public class ExpressionEvaluator extends TokenParser {
     }
 
     public void parseTokens() throws ParseException {
-        parsedTokens = doOparations(this);
+        parsedTokens = doOperations(this);
     }
 
-    private Calculate doOparations(TokenList tokens) throws ParseException {
+    private Calculate doOperations(TokenList tokens) throws ParseException {
         print("Token parsing started....");
         print("\t" + tokens.toLocalString().replaceAll("\n", "\n\t"));
 
@@ -73,28 +75,28 @@ public class ExpressionEvaluator extends TokenParser {
         index = scanFor(tokens, Token.PLUS);
         if (index != -1) {
             token = tokens.tokenAt(index);
-            c = new Operator(doOparations(tokens.split(0, index)), token, doOparations(tokens.split(index + 1, tokens.size())));
+            c = new Operator(doOperations(tokens.split(0, index)), token, doOperations(tokens.split(index + 1, tokens.size())));
         } else {
             index = scanFor(tokens, Token.MINUS);
             if (index != -1) {
                 token = tokens.tokenAt(index);
-                c = new Operator(doOparations(tokens.split(0, index)), token, doOparations(tokens.split(index + 1, tokens.size())));
+                c = new Operator(doOperations(tokens.split(0, index)), token, doOperations(tokens.split(index + 1, tokens.size())));
             } else {
                 index = scanFor(tokens, TokenType.OPARATOR);
                 if (index != -1) {
                     token = tokens.tokenAt(index);
-                    c = new Operator(doOparations(tokens.split(0, index)), token, doOparations(tokens.split(index + 1, tokens.size())));
+                    c = new Operator(doOperations(tokens.split(0, index)), token, doOperations(tokens.split(index + 1, tokens.size())));
                 } else {
                     index = scanFor(tokens, TokenType.FUNCTION_);
                     if (index != -1) {
                         token = tokens.tokenAt(index);
-                        c = new Function_(token, doOparations(getParameter(tokens, index + 1)));
+                        c = new Function_(token, doOperations(Objects.requireNonNull(getParameter(tokens, index + 1))));
                     } else {
                         index = scanFor(tokens, TokenType._FUNCTION_);
                         if (index != -1) {
                             token = tokens.tokenAt(index);
                             ArrayList<TokenList> params = getParameters(tokens, index + 1);
-                            c = new _Function_(token, doOparations(params.get(0)), doOparations(params.get(1)));
+                            c = new _Function_(token, doOperations(params.get(0)), doOperations(params.get(1)));
                         }
                     }
                 }
@@ -108,7 +110,7 @@ public class ExpressionEvaluator extends TokenParser {
             if (tokens.tokenAt(0) == Token.OPEN_PRANTHESIS && tokens.tokenAt(tokens.size() - 1) == Token.CLOSE_PRANTHESIS) {
                 tokens.deleteToken(0);
                 tokens.deleteToken(tokens.size() - 1);
-                return doOparations(tokens);
+                return doOperations(tokens);
             } else {
                 token = tokens.tokenAt(0);
                 switch (token.type) {

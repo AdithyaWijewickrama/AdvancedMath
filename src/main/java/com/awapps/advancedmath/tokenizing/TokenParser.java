@@ -10,18 +10,16 @@ import java.util.logging.Logger;
 public class TokenParser extends TokenList {
 
     private String exp;
-    private VariableList variableList;
+    private final VariableList variableList = new VariableList();
 
     public TokenParser(String exp) {
         super();
         this.exp = exp;
-        variableList = new VariableList();
     }
 
     public TokenParser(TokenList tokenList) throws Exception {
         super(tokenList.tokenList);
         this.exp=tokenList.toLocalString();
-        variableList = new VariableList();
         updateTokens(tokenList);
     }
 
@@ -339,10 +337,6 @@ public class TokenParser extends TokenList {
 
     public VariableList getVariableList() {
         return variableList;
-    }
-
-    public void setVariableList(VariableList variableList) {
-        this.variableList = variableList;
     }
 
     @Override
